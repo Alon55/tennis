@@ -19,6 +19,8 @@ function Tennis() {
                 return "Love";
             case 1:
                 return "15";
+            case 2:
+                return "30";
         }
     }
 
