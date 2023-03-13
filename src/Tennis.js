@@ -1,24 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
+const initialScore = {
+    serverScores: { number: 0, text: 'Love' },
+    opponentScores: { number: 0, text: 'Love' }
+}
+
 function Tennis() {
-    const [score, setScore] = useState({
-        serverScores: { number: 0, text: 'Love' },
-        opponentScores: { number: 0, text: 'Love' }
-    })
+    const [score, setScore] = useState(initialScore)
 
     const startTennisMatch = () => {
-        setScore({
-            serverScores: { number: 0, text: 'Love' },
-            opponentScores: { number: 0, text: 'Love' }
-        });
+        setScore(initialScore);
+    }
+
+    const getScoreInText = (score) => {
+        switch (score) {
+            case 0:
+                return "Love";
+            case 1:
+                return "15";
+        }
     }
 
     const addScores = (e) => {
-        setScore({
-            serverScores: { number: 0, text: '15' },
-            opponentScores: { number: 0, text: 'Love' }
-        })
+        setScore(prev => {
+            return {
+                ...prev,
+                [e.target.id]: {
+                    number: prev[e.target.id].number + 1, text: getScoreInText(prev[e.target.id].number + 1)
+                }
+            }
+        });
     }
 
     return (
