@@ -37,4 +37,20 @@ describe("Tennis Scoring Tests", () => {
         expect(message.innerHTML).toBe("Love - 40");
     });
 
+    test("Server scores 3 times and Opponent scores 2 times.", () => {
+        render(<Tennis />);
+        addScoresMultipleTimes(3, 2);
+        const message = screen.getByTestId("message");
+
+        expect(message.innerHTML).toBe("40 - 30");
+    });
+
+    test("Server scores 4 times", () => {
+        render(<Tennis />);
+        addScoresMultipleTimes(4, 0);
+        const message = screen.getByTestId("message");
+
+        expect(message.innerHTML).toBe("Game - Server");
+    });
+
 });

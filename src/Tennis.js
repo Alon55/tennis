@@ -23,6 +23,8 @@ function Tennis() {
                 return "30";
             case 3:
                 return "40";
+            case 4:
+                return "Game";
             default:
                 return "Love";
         }
@@ -34,7 +36,8 @@ function Tennis() {
                 ...prev,
                 [e.target.id]: {
                     number: prev[e.target.id].number + 1, text: getScoreInText(prev[e.target.id].number + 1)
-                }
+                },
+                ...(e.target.id === 'serverScores' && prev.serverScores.number + 1 === 4 && { opponentScores: { text: 'Server' } })
             }
         });
     }
