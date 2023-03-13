@@ -37,7 +37,8 @@ function Tennis() {
                 [e.target.id]: {
                     number: prev[e.target.id].number + 1, text: getScoreInText(prev[e.target.id].number + 1)
                 },
-                ...(e.target.id === 'serverScores' && prev.serverScores.number + 1 === 4 && { opponentScores: { text: 'Server' } })
+                ...(e.target.id === 'serverScores' && prev.serverScores.number + 1 === 4 && { opponentScores: { text: 'Server' } }),
+                ...(e.target.id === 'opponentScores' && prev.opponentScores.number + 1 === 4 && { serverScores: { text: 'Opponent' } })
             }
         });
     }
