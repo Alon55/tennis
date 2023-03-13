@@ -53,4 +53,12 @@ describe("Tennis Scoring Tests", () => {
         expect(message.innerHTML).toBe("Game - Server");
     });
 
+    test("Server scores 5 times", () => {
+        render(<Tennis />);
+        addScoresMultipleTimes(5, 0);
+        const message = screen.getByTestId("gameOver");
+
+        expect(message.innerHTML).toBe("Game is already over. You can't score anymore.");
+    });
+
 });

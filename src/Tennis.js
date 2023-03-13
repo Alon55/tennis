@@ -53,6 +53,7 @@ function Tennis() {
                 <button id='opponentScores' onClick={addScores}>Opponent Scores</button>
             </div>
             <p data-testid="message">{`${score.serverScores.text} - ${score.opponentScores.text}`}</p>
+            <span data-testid="gameOver">{(score.serverScores.number === 5 || score.opponentScores.number === 5) && "Game is already over. You can't score anymore."}</span>
         </div>
     );
 }
